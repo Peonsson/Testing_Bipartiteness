@@ -36,6 +36,7 @@ public class Main {
         /*
             Building adjacency matrix from input
          */
+        //TODO: represent as adjacency list instead to get O(V*E) instead of O(n^2)
         for (int i = 0; i < input.size(); i++) {
             int vertex1 = input.get(i)[0];
             int vertex2 = input.get(i)[1];
