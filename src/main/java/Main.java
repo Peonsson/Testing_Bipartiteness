@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Created by Xsnud on 2016-09-28.
+ * Created by Johan Pettersson on 2016-09-28.
  */
 public class Main {
 
