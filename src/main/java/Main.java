@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<int[]> input = new ArrayList();
+        ArrayList<int[]> input = new ArrayList<int[]>();
         //input.add(new int[]{0, 1});
         input.add(new int[]{0, 2});
         //input.add(new int[]{1, 0});
