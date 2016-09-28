@@ -70,7 +70,7 @@ public class Main {
                         queued[i] = true;
                         layer[i] = layer[polled] + 1;
                     }
-                    if ((layer[i]) % 2 == 0)
+                    if (layer[i] % 2 == 0)
                         colors[i] = COLOR_RED;
                     else
                         colors[i] = COLOR_BLUE;
