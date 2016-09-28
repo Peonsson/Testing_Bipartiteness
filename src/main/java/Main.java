@@ -33,15 +33,21 @@ public class Main {
 
         int[][] matrix = new int[ARR_SIZE][ARR_SIZE];
 
+        /*
+            Building adjacency matrix from input
+         */
         for (int i = 0; i < input.size(); i++) {
-            int vert1 = input.get(i)[0];
-            int vert2 = input.get(i)[1];
-            matrix[vert1][vert2] = 1;
+            int vertex1 = input.get(i)[0];
+            int vertex2 = input.get(i)[1];
+            matrix[vertex1][vertex2] = 1;
         }
 
-//        for (int i = 0; i < matrix.length; i++) {
-//            System.out.println(Arrays.toString(matrix[i]));
-//        }
+        /*
+            Printing adjacency matrix from input
+         */
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.println(Arrays.toString(matrix[i]));
+        }
 
         int[] layer = new int[ARR_SIZE];
         boolean[] queued = new boolean[ARR_SIZE];
@@ -51,7 +57,6 @@ public class Main {
         queue.add(START_NODE);
         queued[START_NODE] = true;
         layer[START_NODE] = 0;
-        //colors[START_NODE] = COLOR_BLUE;
         boolean bipartite = true;
 
         while (!queue.isEmpty()) {
@@ -59,7 +64,7 @@ public class Main {
             System.out.println("polled: " + polled);
             for (int i = 0; i < ARR_SIZE; i++) {
                 if (matrix[polled][i] == 1) {
-                    if(queued[i] == false) {
+                    if (!queued[i]) {
                         queue.add(i);
                         queued[i] = true;
                         layer[i] = layer[polled] + 1;
@@ -69,7 +74,7 @@ public class Main {
                     else
                         colors[i] = COLOR_BLUE;
 
-                    if(colors[polled] == colors[i])
+                    if (colors[polled] == colors[i])
                         bipartite = false;
                 }
             }
