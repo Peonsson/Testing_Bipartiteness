@@ -15,7 +15,7 @@ public class Main {
 
         /*
             this part is strongly connected and bipartite with 7 vertexes.
-            see graph.PNG
+            see .../resources/graph.PNG
          */
         //input.add(new int[]{0, 1});
         input.add(new int[]{0, 2});
@@ -40,7 +40,7 @@ public class Main {
 
         /*
             this part is strongly connected and non-bipartite with 3 vertexes, but is disconnected from the graph above.
-            see graph.PNG
+            see .../resources/graph.PNG
          */
         input.add(new int[]{7, 8});
         input.add(new int[]{7, 9});
