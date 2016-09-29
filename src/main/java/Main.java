@@ -5,15 +5,18 @@ import java.util.*;
  */
 public class Main {
 
-    private static final int ARR_SIZE = 7;
-    private static final int START_NODE = 4;
-
+    private static final int ARR_SIZE = 10;
     private static final int COLOR_RED = 2;
     private static final int COLOR_BLUE = 1;
 
     public static void main(String[] args) {
 
         ArrayList<int[]> input = new ArrayList<int[]>();
+
+        /*
+            this graph is an strongly connected bipartite graph with 7 vertexes.
+            see graph.PNG
+         */
         //input.add(new int[]{0, 1});
         input.add(new int[]{0, 2});
         //input.add(new int[]{1, 0});
@@ -21,8 +24,11 @@ public class Main {
         input.add(new int[]{1, 3});
         input.add(new int[]{2, 0});
         input.add(new int[]{2, 1});
+        //input.add(new int[]{2, 3});
         input.add(new int[]{2, 4});
+        input.add(new int[]{2, 6});
         input.add(new int[]{3, 1});
+        //input.add(new int[]{3, 2});
         input.add(new int[]{3, 4});
         input.add(new int[]{4, 2});
         input.add(new int[]{4, 3});
@@ -30,6 +36,18 @@ public class Main {
         input.add(new int[]{5, 4});
         input.add(new int[]{5, 6});
         input.add(new int[]{6, 5});
+        input.add(new int[]{6, 2});
+
+        /*
+            this is a disconnected non-bipartite triangle graph from the one above with 3 vertexes.
+            see graph.PNG
+         */
+        input.add(new int[]{7, 8});
+        input.add(new int[]{7, 9});
+        input.add(new int[]{8, 7});
+        input.add(new int[]{8, 9});
+        input.add(new int[]{9, 8});
+        input.add(new int[]{9, 7});
 
         int[][] matrix = new int[ARR_SIZE][ARR_SIZE];
 
@@ -46,42 +64,46 @@ public class Main {
         /*
             Printing adjacency matrix from input
          */
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.println(Arrays.toString(matrix[i]));
-        }
+//        for (int i = 0; i < matrix.length; i++) {
+//            System.out.println(Arrays.toString(matrix[i]));
+//        }
 
         int[] layer = new int[ARR_SIZE];
         boolean[] queued = new boolean[ARR_SIZE];
         Queue<Integer> queue = new LinkedList<Integer>();
         int[] colors = new int[ARR_SIZE];
-
-        queue.add(START_NODE);
-        queued[START_NODE] = true;
-        layer[START_NODE] = 0;
         boolean bipartite = true;
 
-        while (!queue.isEmpty()) {
-            int polled = queue.poll();
-            System.out.println("polled: " + polled);
-            for (int i = 0; i < ARR_SIZE; i++) {
-                if (matrix[polled][i] == 1) {
-                    if (!queued[i]) {
-                        queue.add(i);
-                        queued[i] = true;
-                        layer[i] = layer[polled] + 1;
-                    }
-                    if (layer[i] % 2 == 0)
-                        colors[i] = COLOR_RED;
-                    else
-                        colors[i] = COLOR_BLUE;
+        for (int i = 0; i < ARR_SIZE; i++) {
+            if (queued[i] == false) {
+                queue.add(i);
+                queued[i] = true;
+                layer[i] = 0;
+                while (!queue.isEmpty()) {
+                    int polled = queue.poll();
+                    //System.out.println("polled: " + polled);
+                    for (int j = 0; j < ARR_SIZE; j++) {
+                        if (matrix[polled][j] == 1) {
+                            if (!queued[j]) {
+                                queue.add(j);
+                                queued[j] = true;
+                                layer[j] = layer[polled] + 1;
+                            }
+                            if (layer[j] % 2 == 0)
+                                colors[j] = COLOR_RED;
+                            else
+                                colors[j] = COLOR_BLUE;
 
-                    if (colors[polled] == colors[i])
-                        bipartite = false;
+                            if (colors[polled] == colors[j])
+                                bipartite = false;
+                        }
+                    }
                 }
             }
         }
-        System.out.println("layer: " + Arrays.toString(layer));
-        System.out.println("colors: " + Arrays.toString(colors));
+//        System.out.println("layer: " + Arrays.toString(layer));
+//        System.out.println("queued: " + Arrays.toString(queued));
+//        System.out.println("colors: " + Arrays.toString(colors));
         System.out.println("bipartite: " + bipartite);
     }
 }
