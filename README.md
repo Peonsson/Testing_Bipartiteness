@@ -2,3 +2,4 @@
 <h4>Built using an adjacency matrix. O(n^2).<br/> 
 Input is a list of pair of vertexes that are strongly connected.</h4>
 <img src="https://github.com/Peonsson/Testing_Bipartiteness/blob/master/src/main/resources/graph.PNG?raw=true">
+_figure 1: example graph that is already defined when pulling_
