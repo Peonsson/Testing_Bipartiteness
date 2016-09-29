@@ -75,7 +75,7 @@ public class Main {
         boolean bipartite = true;
 
         for (int i = 0; i < ARR_SIZE; i++) {
-            if (queued[i] == false) {
+            if (!queued[i]) {
                 queue.add(i);
                 queued[i] = true;
                 layer[i] = 0;
