@@ -61,13 +61,6 @@ public class Main {
             matrix[vertex1][vertex2] = 1;
         }
 
-        /*
-            Printing adjacency matrix from input
-         */
-//        for (int i = 0; i < matrix.length; i++) {
-//            System.out.println(Arrays.toString(matrix[i]));
-//        }
-
         int[] layer = new int[ARR_SIZE];
         boolean[] queued = new boolean[ARR_SIZE];
         Queue<Integer> queue = new LinkedList<Integer>();
@@ -81,7 +74,6 @@ public class Main {
                 layer[i] = 0;
                 while (!queue.isEmpty()) {
                     int polled = queue.poll();
-                    //System.out.println("polled: " + polled);
                     for (int j = 0; j < ARR_SIZE; j++) {
                         if (matrix[polled][j] == 1) {
                             if (!queued[j]) {
@@ -101,9 +93,6 @@ public class Main {
                 }
             }
         }
-//        System.out.println("layer: " + Arrays.toString(layer));
-//        System.out.println("queued: " + Arrays.toString(queued));
-//        System.out.println("colors: " + Arrays.toString(colors));
         System.out.println("bipartite: " + bipartite);
     }
 }
