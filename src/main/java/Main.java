@@ -64,7 +64,7 @@ public class Main {
         int[] layer = new int[ARR_SIZE];
         boolean[] queued = new boolean[ARR_SIZE];
         Queue<Integer> queue = new LinkedList<Integer>();
-        int[] colors = new int[ARR_SIZE];
+        int[] Color = new int[ARR_SIZE];
         boolean bipartite = true;
 
         for (int i = 0; i < ARR_SIZE; i++) {
@@ -82,11 +82,11 @@ public class Main {
                                 layer[j] = layer[polled] + 1;
                             }
                             if (layer[j] % 2 == 0)
-                                colors[j] = COLOR_RED;
+                                Color[j] = COLOR_RED;
                             else
-                                colors[j] = COLOR_BLUE;
+                                Color[j] = COLOR_BLUE;
 
-                            if (colors[polled] == colors[j])
+                            if (Color[polled] == Color[j])
                                 bipartite = false;
                         }
                     }
