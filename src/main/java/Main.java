@@ -14,7 +14,7 @@ public class Main {
         ArrayList<int[]> input = new ArrayList<int[]>();
 
         /*
-            this graph is an strongly connected bipartite graph with 7 vertexes.
+            this part is strongly connected and bipartite with 7 vertexes.
             see graph.PNG
          */
         //input.add(new int[]{0, 1});
@@ -39,7 +39,7 @@ public class Main {
         input.add(new int[]{6, 2});
 
         /*
-            this is a disconnected non-bipartite triangle graph from the one above with 3 vertexes.
+            this part is strongly connected and non-bipartite with 3 vertexes, but is disconnected from the graph above.
             see graph.PNG
          */
         input.add(new int[]{7, 8});
